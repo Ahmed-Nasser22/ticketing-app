@@ -1,0 +1,34 @@
+<!-- ticket-list.component.html -->
+
+<div >
+    <h2>All Tickets</h2>
+    <button (click)="reloadTickets()" class="reload-button">Reload Tickets</button>
+    <button (click)="previousPage()" [disabled]="currentPage === 1">Previous Page</button>
+    <button *ngIf="tickets.length != 0"  (click)="nextPage()">Next Page</button>
+    <div class="card-container">
+      <div class="card" *ngFor="let ticket of tickets">
+        <div class="card-header" [style.background-color]="calculateTicketColor(ticket.creationDateTime)">
+          Ticket #{{ ticket.id }} 
+        </div>
+        <div class="card-body">
+          <p><strong>Creation Date:</strong> {{ ticket.creationDateTime | date: 'short' }}</p>
+          <p><strong>Phone Number:</strong> {{ ticket.phoneNumber }}</p>
+          <p><strong>Governorate:</strong> {{ ticket.governorate }}</p>
+          <p><strong>City:</strong> {{ ticket.city }}</p>
+          <p><strong>District:</strong> {{ ticket.district }}</p>
+          <p><strong>Status:</strong> {{ ticket.status }}</p>
+          <button (click)="handleTicket(ticket.id)">Handle Ticket</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+ 
+  <div *ngIf="tickets.length === 0">
+    <p>No tickets available.</p>
+  </div>
+
+  <div>
+   
+  </div>
+  

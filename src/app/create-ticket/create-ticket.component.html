@@ -1,0 +1,21 @@
+<form (ngSubmit)="createTicket()">
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="text" id="phoneNumber" name="phoneNumber" [(ngModel)]="ticketData.phoneNumber" required>
+  
+  <label for="governorate">Governorate:</label>
+  <select id="governorate" name="governorate" [(ngModel)]="ticketData.governorate" required>
+    <option *ngFor="let option of governorateOptions" [value]="option">{{ option }}</option>
+  </select>
+
+  <label for="city">City:</label>
+  <select id="city" name="city" [(ngModel)]="ticketData.city" required>
+    <option *ngFor="let option of cityOptions" [value]="option">{{ option }}</option>
+  </select>
+      
+  <label for="district">District:</label>
+  <select id="district" name="district" [(ngModel)]="ticketData.district" required>
+    <option *ngFor="let option of districtOptions" [value]="option">{{ option }}</option>
+  </select>
+
+  <button type="submit">Create Ticket</button>
+</form>
